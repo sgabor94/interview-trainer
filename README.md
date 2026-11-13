@@ -1,8 +1,9 @@
 # Interview Trainer
 
-An AI-powered trainer for technical interviews. Pick a topic (Java, Spring Boot, Kafka, OpenShift, ...)
-and a level (junior, mid, senior, architect); the app generates questions, evaluates your free-text
-answers against a rubric, and digs deeper with follow-up questions – like a real interviewer.
+An AI-powered, chat-style trainer for practising technical topics. Pick any topic and subtopic
+(Java, Spring Boot → Security, Kafka, OpenShift, ...) and a level (junior, mid, senior, architect);
+the app generates fresh questions, evaluates your free-text answers against a rubric, and digs deeper
+with follow-up questions. Everything is kept, so weak spots come back for repetition.
 
 > Status: early development.
 
