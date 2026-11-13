@@ -28,6 +28,9 @@
 	</scm>
 	<properties>
 		<java.version>25</java.version>
+		<anthropic-java.version>3.8.0</anthropic-java.version>
+		<!-- Cleared by the "live" profile below. -->
+		<surefire.excludedGroups>live</surefire.excludedGroups>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,6 +48,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-flyway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anthropic</groupId>
+			<artifactId>anthropic-java</artifactId>
+			<version>${anthropic-java.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -94,7 +102,31 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<!-- Tests tagged "live" call the real Claude API (costs money); run them with: mvn test -Dgroups=live -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludedGroups>${surefire.excludedGroups}</excludedGroups>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<!-- Activated by -Dgroups=live: lifts the default exclusion, otherwise it would win and run nothing. -->
+			<id>live</id>
+			<activation>
+				<property>
+					<name>groups</name>
+					<value>live</value>
+				</property>
+			</activation>
+			<properties>
+				<surefire.excludedGroups></surefire.excludedGroups>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

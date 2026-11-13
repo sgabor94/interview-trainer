@@ -11,11 +11,16 @@ with follow-up questions. Everything is kept, so weak spots come back for repeti
 - Java 25, Spring Boot 4.1, Maven
 - Spring Web MVC, Spring Data JPA, Bean Validation, Actuator
 - Flyway migrations; H2 in PostgreSQL mode (local), PostgreSQL (planned)
-- Claude API via the Anthropic Java SDK (planned)
+- Claude API via the Anthropic Java SDK (structured outputs)
 - Angular frontend (planned)
 
 ## Running locally
-Requirements: JDK 25, Maven 3.9+.
+Requirements: JDK 25, Maven 3.9+, and an Anthropic API key for the AI features
+(the app also starts without one, but AI calls will fail):
+
+```bash
+setx ANTHROPIC_API_KEY "<your key>"
+```
 
 ```bash
 mvn spring-boot:run
