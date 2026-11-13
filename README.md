@@ -10,7 +10,7 @@ with follow-up questions. Everything is kept, so weak spots come back for repeti
 ## Tech stack
 - Java 25, Spring Boot 4.1, Maven
 - Spring Web MVC, Spring Data JPA, Bean Validation, Actuator
-- H2 (local), PostgreSQL (planned)
+- Flyway migrations; H2 in PostgreSQL mode (local), PostgreSQL (planned)
 - Claude API via the Anthropic Java SDK (planned)
 - Angular frontend (planned)
 

@@ -18,6 +18,8 @@ import jakarta.persistence.OrderColumn;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -44,6 +46,7 @@ public class Question {
     private Topic topic;
 
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.VARCHAR) // varchar + check constraint in SQL, not H2's native enum type
     @Column(nullable = false, length = 20)
     private Level level;
 
